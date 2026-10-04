@@ -108,3 +108,14 @@ dialog h2 { font: 700 1.8rem var(--serif); color: var(--gold); margin-bottom: 8p
     *, *::after { animation: none !important; transition: none !important; }
     .hero h1::after { width: 120px; }
 }
+
+/* общее для внутренних страниц */
+.site-header nav { display: flex; gap: 28px; }
+.btn {
+    padding: 8px 18px; cursor: pointer; font: inherit; font-size: .95rem;
+    background: none; color: var(--gold); border: 1px solid var(--line);
+    transition: background .2s, color .2s, border-color .2s;
+}
+.btn:hover { border-color: var(--gold); color: var(--gold-hi); }
+.btn.solid { border-color: var(--gold); }
+.btn.solid:hover { background: var(--gold); color: var(--bg); }

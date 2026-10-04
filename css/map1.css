@@ -1,0 +1,64 @@
+body.app { height: 100vh; overflow: hidden; }
+.layout { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 340px; }
+
+/* карта и плеер */
+.stage { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+.map-wrap { position: relative; flex: 1; min-height: 240px; background: var(--panel); }
+#map { position: absolute; inset: 0; }
+#map [class*="ground-pane"] { filter: invert(1) hue-rotate(180deg) sepia(.5) brightness(.85); }
+.map-note { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; color: var(--muted); }
+.map-note[hidden] { display: none; }
+.player { display: grid; gap: 14px; padding: 18px 24px 22px; border-top: 1px solid var(--line); }
+.now h2 { font: 700 1.8rem/1.15 var(--serif); color: var(--gold-hi); }
+.now p { max-width: 72ch; margin-top: 6px; min-height: 3.3em; }
+#slider { width: 100%; accent-color: var(--gold); }
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.count { color: var(--muted); margin-left: 6px; }
+#more { margin-left: auto; }
+
+/* список остановок и участники */
+.side { display: flex; flex-direction: column; min-height: 0; border-left: 1px solid var(--line); }
+.side h1 { font: 700 1.6rem/1.15 var(--serif); color: var(--gold); padding: 20px 22px 12px; }
+.stops { flex: 1; min-height: 0; overflow-y: auto; list-style: none; padding: 0 10px 10px; }
+.stops button {
+    display: flex; gap: 12px; width: 100%; padding: 8px 12px; text-align: left;
+    font: inherit; font-size: .95rem; line-height: 1.3; cursor: pointer;
+    background: none; color: var(--muted); border: 0; border-left: 2px solid transparent;
+    transition: color .2s, background .2s;
+}
+.stops .n { min-width: 1.5em; font: 700 1.05rem var(--serif); color: var(--gold); }
+.stops button:hover { color: var(--ink); }
+.stops button.on { color: var(--gold-hi); border-left-color: var(--gold); background: rgba(201, 162, 75, .09); }
+.team { padding: 14px 22px 18px; border-top: 1px solid var(--line); }
+.team h2 { font: 700 1.15rem var(--serif); color: var(--gold); margin-bottom: 10px; }
+.team ul { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; }
+.team button {
+    padding: 4px 11px; font: inherit; font-size: .88rem; cursor: pointer;
+    background: none; color: var(--ink); border: 1px solid var(--line); transition: border-color .2s, color .2s;
+}
+.team button:hover { border-color: var(--gold); color: var(--gold-hi); }
+
+/* окна с подробностями */
+.modal { width: calc(100% - 32px); max-width: 640px; max-height: 86vh; padding: 0; overflow: auto; }
+.modal .inner { padding: 28px 32px 32px; }
+.modal form { float: right; position: sticky; top: 0; z-index: 1; }
+.x { background: none; border: 0; color: var(--gold); font-size: 2rem; line-height: 1; padding: 6px 14px; cursor: pointer; }
+.x:hover { color: var(--gold-hi); }
+.imgs { display: flex; gap: 10px; margin-bottom: 18px; }
+.imgs img { flex: 1; min-width: 0; max-height: 240px; object-fit: cover; border: 1px solid var(--line); filter: grayscale(.5); }
+.modal h2 { padding-right: 36px; }
+.modal h3 { font: 700 1.15rem var(--serif); color: var(--gold); margin-top: 14px; }
+.modal p, .modal li { margin-top: 10px; }
+.modal ul { padding-left: 1.3em; }
+.modal strong { color: var(--gold-hi); }
+
+@media (max-width: 900px) {
+    body.app { height: auto; overflow: visible; }
+    .layout { grid-template-columns: 1fr; }
+    .map-wrap { flex: none; height: 45vh; }
+    .side { border-left: 0; border-top: 1px solid var(--line); }
+    .stops { max-height: 280px; }
+    .player { padding: 16px; }
+    #more { margin-left: 0; }
+    .modal .inner { padding: 20px; }
+}

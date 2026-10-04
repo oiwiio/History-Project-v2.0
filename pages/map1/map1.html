@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Последний маршрут Александра II — Народники</title>
+    <link rel="icon" href="../../img/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/map1.css">
+</head>
+<body class="app">
+    <header class="site-header">
+        <a class="brand" href="../../index.html"><img src="../../img/logo.png" alt="" width="36" height="36"><span>Народники</span></a>
+        <nav>
+            <a href="../../index.html">На главную</a>
+            <a href="../createrpages/creater.html">Команда</a>
+        </nav>
+    </header>
+
+    <div class="layout">
+        <section class="stage">
+            <div class="map-wrap">
+                <div id="map"></div>
+                <p class="map-note" id="mapNote">Здесь появится карта Петербурга.<br>Чтобы она загрузилась, подставьте API-ключ Яндекс Карт в подключение скрипта.</p>
+            </div>
+            <div class="player">
+                <div class="now">
+                    <h2 id="nowTitle"></h2>
+                    <p id="nowText"></p>
+                </div>
+                <input type="range" id="slider" min="0" max="14" step="1" value="0" aria-label="Точка маршрута">
+                <div class="controls">
+                    <button class="btn" id="prev">Назад</button>
+                    <button class="btn" id="play">Автопрокрутка</button>
+                    <button class="btn" id="next">Вперёд</button>
+                    <span class="count" id="count"></span>
+                    <button class="btn solid" id="more" data-modal="modal-info-1">Подробнее</button>
+                </div>
+            </div>
+        </section>
+
+        <aside class="side">
+            <h1>Последний маршрут Александра II</h1>
+            <ol class="stops"><li><button data-i="0"><span class="n">1</span><span>Зимний дворец / Дворцовая площадь</span></button></li><li><button data-i="1"><span class="n">2</span><span>Место покушения Александра Соловьёва</span></button></li><li><button data-i="2"><span class="n">3</span><span>План взрыва Каменного моста</span></button></li><li><button data-i="3"><span class="n">4</span><span>Сырная лавка на Малой Садовой</span></button></li><li><button data-i="4"><span class="n">5</span><span>Невский проспект</span></button></li><li><button data-i="5"><span class="n">6</span><span>Певческий мост</span></button></li><li><button data-i="6"><span class="n">7</span><span>Театральный мост</span></button></li><li><button data-i="7"><span class="n">8</span><span>Поворот на Большую Итальянскую улицу</span></button></li><li><button data-i="8"><span class="n">9</span><span>Михайловский манеж</span></button></li><li><button data-i="9"><span class="n">10</span><span>Обратный путь. Михайловский сквер</span></button></li><li><button data-i="10"><span class="n">11</span><span>Михайловский дворец</span></button></li><li><button data-i="11"><span class="n">12</span><span>Перегруппировка</span></button></li><li><button data-i="12"><span class="n">13</span><span>Обратный путь по набережной</span></button></li><li><button data-i="13"><span class="n">14</span><span>Место убийства</span></button></li><li><button data-i="14"><span class="n">15</span><span>Возвращение в Зимний дворец</span></button></li></ol>
+            <div class="team">
+                <h2>Участники заговора</h2>
+                <ul><li><button data-modal="modal-grinevitsky">Гриневицкий</button></li><li><button data-modal="modal-rysakov">Рысаков</button></li><li><button data-modal="modal-perovskaya">Перовская</button></li><li><button data-modal="modal-zhelyabov">Желябов</button></li><li><button data-modal="modal-reserves">Запасные метальщики</button></li></ul>
+            </div>
+        </aside>
+    </div>
+
+<dialog class="modal" id="modal-grinevitsky"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/3-narodovolecignatij.800.jpg" alt=""></div><h2>Игнатий Гриневицкий Иоахимович</h2>
+<p> - Роль: Бросил вторую бомбу, смертельно ранившую императора.  </p>
+<p> - Место: Стоял у решетки Екатерининского канала (канал Грибоедова). </p>
+<p> - Действия: Когда Александр II подошёл ближе, 
+                Гриневицкий бросил бомбу под ноги царю. 
+                Взрывом императору оторвало ноги, 
+                а сам террорист получил смертельные ранения и умер в тот же день.
+         </p></div></dialog>
+<dialog class="modal" id="modal-rysakov"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/Ni_rysakov.jpg" alt=""></div><h2>Рысаков Николай Иванович</h2>
+<p> - Роль: Бросил первую бомбу, но она лишь ранила охрану.  </p>
+<p> - Место: Находился на набережной Екатерининского канала.  </p>
+<p> - Действия: Бросил снаряд в царскую карету,
+                 но Александр II не пострадал.
+                 После взрыва был схвачен казаками и городовыми. 
+         </p></div></dialog>
+<dialog class="modal" id="modal-perovskaya"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/S_Perovskaya.jpg" alt=""></div><h2>Софья Перовская Львовна</h2>
+<p> - Роль: Организатор и координатор покушения.  
+            </p><p> - Место: Находилась на противоположном берегу канала, подавала сигналы (платком) о приближении царя.</p>
+<p> - Действия: Контролировала процесс, давала знаки бомбометателям, когда нужно атаковать. </p></div></dialog>
+<dialog class="modal" id="modal-zhelyabov"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/800px-Zhelyabov.jpg" alt=""></div><h2>Желябов Андрей Иванович</h2>
+<p> - Роль: Главный организатор покушения.  
+            </p><p> - Где был: Арестован за 2 дня до убийства (27 февраля), но его планы были уже приведены в действие.  </p>
+<p> - Действия: Разработал операцию, подобрал исполнителей, но сам не участвовал непосредственно в нападении. </p></div></dialog>
+<dialog class="modal" id="modal-reserves"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/Mikhailov_tm.jpg" alt=""><img src="img/Emelyanov_Ivan_Panteleymonovich.jpg" alt=""></div><h2> Запасные метальщики</h2>
+<p> Запасные метальщики:  
+            </p><p> - Михайлов Тимофей Михайлович – стоял в резерве, но не бросил бомбу.</p>
+<p> - Емельянов Иван Пантелеймонович – также был на месте,но не участвовал в атаке.</p></div></dialog>
+<dialog class="modal" id="modal-info-1"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/dborez.jpg" alt=""></div><h2>1. Зимний дворец — начало маршрута</h2>
+<p><strong>1 марта 1881 года, 12:45</strong></p>
+<p>Александр II выехал из Зимнего дворца в Михайловский манеж для участия в разводе караулов. Это было его обычное воскресное мероприятие.</p>
+<p>Интересный факт: в этот день император отменил утренний прием министра внутренних дел Лорис-Меликова, где должен был обсуждаться проект конституции.</p></div></dialog>
+<dialog class="modal" id="modal-info-2"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/411px-Soloviev_AK.jpg" alt=""><img src="img/pokuhenie.jpg" alt=""></div><h2>2. Первое покушение: выстрел Соловьёва</h2>
+<p><strong>2 апреля 1879 года</strong></p>
+<p>Александр Соловьёв, член "Земли и воли", совершил первое из шести покушений на Александра II, выпустив пять пуль из револьвера.</p>
+<p>Император уцелел благодаря зигзагообразному бегу. Этот эпизод заставил его сократить публичные выходы и усилить охрану.</p></div></dialog>
+<dialog class="modal" id="modal-info-3"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/most.jpg" alt=""></div><h2>3. План минирования Каменного моста</h2>
+<p><strong>Лето 1880 года</strong></p>
+<p>Желябов разработал план подрыва моста при проезде царского кортежа. Под мост были опущены:</p>
+<ul>
+<li>4 резиновых мешка с 65 кг динамита</li>
+<li>Гальваническая батарея для подрыва</li>
+</ul>
+<p>План отменили из-за изменения маршрута императора.</p></div></dialog>
+<dialog class="modal" id="modal-info-4"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/lavka.jpg" alt=""></div><h2>4. Подкоп под Малой Садовой</h2>
+<p><strong>Ноябрь 1880 - февраль 1881</strong></p>
+<h3>Организация:</h3>
+<ul>
+<li>Лавка арендована под видом сырной торговли</li>
+<li>Подкоп велся ночами в течение 3 месяцев</li>
+<li>Вывезено 64 куб.м земли (замаскировано под товар)</li>
+</ul>
+<h3>Технические детали:</h3>
+<p>Заложено 96 кг динамита с электродетонатором. Взрывное устройство так и не было использовано - царь изменил маршрут.</p>
+<p><em>Интересно:</em> Хозяйка лавки позже свидетельствовала, что "купцы" интересовались только подвалом.</p></div></dialog>
+<dialog class="modal" id="modal-info-5"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/nevskiy.jpg" alt=""></div><h2>5. Альтернативный маршрут через Невский</h2>
+<p><strong>Утро 1 марта 1881</strong></p>
+<p>По данным наблюдений Перовской, император обычно следовал в Манеж:</p>
+<li>По Невскому проспекту</li>
+<li>Через Казанский мост</li>
+<li>По Малой Садовой (где ждал подкоп)</li>
+<p>В этот день кучер получил приказ ехать через Певческий мост - это сорвало первоначальный план террористов.</p>
+<p><em>Деталь:</em> На Невском дежурил метальщик Тимофей Михайлов с запасной бомбой.</p></div></dialog>
+<dialog class="modal" id="modal-info-6"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/pevmost.jpg" alt=""></div><h2>6. Неожиданный поворот на Певческий мост</h2>
+<p><strong>13:10, 1 марта</strong></p>
+<p>Причины изменения маршрута:</p>
+<ul>
+<li>Желание избежать скопления народа на Невском</li>
+<li>Более короткий путь через Дворцовую площадь</li>
+</ul>
+<p>Это решение:</p>
+<ul>
+<li>Спасло жизнь Александру II утром</li>
+<li>Вынудило террористов импровизировать</li>
+<li>Привело кортеж к Екатерининскому каналу</li>
+</ul></div></dialog>
+<dialog class="modal" id="modal-info-7"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/teatrmost.jpg" alt=""></div><h2>7. Пересечение с Екатерининским каналом</h2>
+<p><strong>13:15, 1 марта</strong></p>
+<p>Критическая точка маршрута:</p>
+<table>
+<tr><th>Фактор</th><th>Значение</th></tr>
+<tr><td>Ширина моста</td><td>Всего 18 м</td></tr>
+<tr><td>Скорость кортежа</td><td>Не более 10 км/ч</td></tr>
+<tr><td>Дистанция до воды</td><td>3.5 м</td></tr>
+</table>
+<p>Именно здесь Перовская впервые увидела царскую карету и начала подавать сигналы.</p></div></dialog>
+<dialog class="modal" id="modal-info-8"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/italiano.jpg" alt=""></div><h2>8. Роковой поворот на Итальянскую</h2>
+<p><strong>13:20, 1 марта</strong></p>
+<h3>Почему это стало ошибкой:</h3>
+<ul>
+<li>Узкая улица (всего 12 м шириной)</li>
+<li>Невозможность для кареты быстро развернуться</li>
+<li>Отсутствие полицейских постов на этом участке</li>
+</ul>
+<p>Карета замедлилась до 5 км/ч, что сделало её идеальной мишенью.</p></div></dialog>
+<dialog class="modal" id="modal-info-9"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/manej.webp" alt=""></div><h2>9. Церемония в Манеже</h2>
+<p><strong>13:30-14:00, 1 марта</strong></p>
+<p>В это время:</p>
+<ul>
+<li>Александр II принимал парад</li>
+<li>Перовская перегруппировала бомбометателей</li>
+<li>Гриневицкий занял позицию у решётки канала</li>
+</ul>
+<p><em>Важно:</em> После манежа император решил заехать к кузине, что изменило обратный маршрут.</p></div></dialog>
+<dialog class="modal" id="modal-info-10"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/da.jpg" alt=""></div><h2>10. Возвращение через сквер</h2>
+<p><strong>14:05, 1 марта</strong></p>
+<p>Особенности местности:</p>
+<ul>
+<li>Булыжная мостовая (плохая амортизация)</li>
+<li>Открытое пространство для обзора</li>
+<li>Решётка канала как естественная преграда</li>
+</ul>
+<p>Именно здесь Рысаков впервые увидел приближающуюся карету.</p></div></dialog>
+<dialog class="modal" id="modal-info-11"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/mihdvor.jpg" alt=""></div><h2>11. Визит к Великой княгине</h2>
+<p><strong>14:00-14:10, 1 марта</strong></p>
+<p>Детали визита:</p>
+<ul>
+<li>Продолжительность: ровно 12 минут</li>
+<li>Обсуждали: здоровье княгини и семейные дела</li>
+<li>Охрана: оставалась у входа</li>
+</ul>
+<p>Этот неожиданный визит дал террористам время занять новые позиции.</p></div></dialog>
+<dialog class="modal" id="modal-info-12"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/platok.webp" alt=""></div><h2>12. Решающая передислокация</h2>
+<p><strong>14:05-14:10, 1 марта</strong></p>
+<p>Действия Перовской:</p>
+<ol>
+<li>Подняла белый платок - сигнал к перегруппировке</li>
+<li>Распределила метальщиков вдоль канала</li>
+<li>Лично указала Гриневицкому ключевую позицию</li>
+</ol>
+<p>Всего на набережной заняли позиции 4 бомбометателя.</p></div></dialog>
+<dialog class="modal" id="modal-info-13"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/engyl.jpg" alt=""></div><h2>13. Последний отрезок пути</h2>
+<p><strong>14:12, 1 марта</strong></p>
+<p>Параметры движения:</p>
+<table>
+<tr><th>Параметр</th><th>Значение</th></tr>
+<tr><td>Скорость</td><td>7 км/ч</td></tr>
+<tr><td>Дистанция до цели</td><td>280 м</td></tr>
+<tr><td>Состав охраны</td><td>6 казаков, 2 полицейских</td></tr>
+</table>
+<p>Карета двигалась так медленно из-за повреждений от первой бомбы.</p></div></dialog>
+<dialog class="modal" id="modal-info-14"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/vzriw.webp" alt=""></div><h2>14. Роковой взрыв на набережной</h2>
+<p><strong>14:15, 1 марта 1881 года</strong></p>
+<h3>Хронология событий:</h3>
+<ol>
+<li><strong>14:10</strong> — Рысаков бросает первую бомбу (повреждена карета, ранены охранники)</li>
+<li><strong>14:12</strong> — Александр II выходит осмотреть раненых</li>
+<li><strong>14:15</strong> — Гриневицкий бросает вторую бомбу под ноги императору</li>
+</ol>
+<h3>Последствия:</h3>
+<ul>
+<li>Императору раздроблены обе ноги, поврежден живот</li>
+<li>Гриневицкий смертельно ранен осколками</li>
+<li>8 случайных прохожих ранено</li>
+</ul>
+<p>Смерть наступила в 15:35 в Зимнем дворце. Последние слова: "Во дворец... Там умереть..."</p></div></dialog>
+<dialog class="modal" id="modal-info-15"><form method="dialog"><button class="x" aria-label="Закрыть">&times;</button></form><div class="inner"><div class="imgs"><img src="img/odr.jpg" alt=""></div><h2>15. Последний путь императора</h2>
+<p><strong>14:30-15:35, 1 марта</strong></p>
+<h3>Трагическая процессия:</h3>
+<ul>
+<li>Дистанция: 1.2 км</li>
+<li>Транспорт: санитарные носилки</li>
+<li>Сопровождение: плачущая толпа</li>
+</ul>
+<h3>Медицинские факты:</h3>
+<p>Причины смерти:</p>
+<ol>
+<li>Потеря крови (разрыв бедренной артерии)</li>
+<li>Травматический шок</li>
+<li>Осколочные ранения живота</li>
+</ol>
+<p>Официальное время смерти: 15:35 по дворцовым часам.</p></div></dialog>
+
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=ВАШ_API_КЛЮЧ&lang=ru_RU"></script>
+    <script src="../../js/map1.js"></script>
+</body>
+</html>
