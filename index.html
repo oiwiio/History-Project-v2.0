@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Народники — история в двух картах</title>
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="index.html">
+            <img src="img/logo.png" alt="" width="36" height="36">
+            <span>Народники</span>
+        </a>
+        <nav>
+            <a href="pages/createrpages/creater.html">Команда</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Народники</h1>
+            <p class="lead">
+                Участники общественного движения в Российской империи второй половины XIX века.
+                Они выступали за социальную справедливость и свержение самодержавия, верили,
+                что крестьянская община станет основой социализма, и звали народ к борьбе.
+            </p>
+        </section>
+
+        <section class="diptych" aria-label="Выберите карту">
+            <a class="panel" href="pages/map1/map1.html">
+                <img src="img/route.jpg" alt="">
+                <div class="panel-text">
+                    <h2>Последний день Александра II</h2>
+                    <p>Маршрут царя 1 марта 1881 года по Петербургу: от Зимнего дворца до места покушения.</p>
+                    <span class="cta">Открыть маршрут</span>
+                </div>
+            </a>
+            <a class="panel" href="pages/map2/map2.html">
+                <img src="img/regions.jpg" alt="">
+                <div class="panel-text">
+                    <h2>Где действовали народники</h2>
+                    <p>Центральная Россия, Поволжье и Украина: регионы, где работало движение.</p>
+                    <span class="cta">Открыть карту</span>
+                </div>
+            </a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <span>Исторический проект © 2025</span>
+        <button class="secret" id="secretBtn" aria-label="Подсказка">?</button>
+    </footer>
+
+    <dialog id="secretModal">
+        <h2>Достижение получено</h2>
+        <p>Вы нашли секретную кнопку на странице.</p>
+        <button class="close" id="closeBtn">Закрыть</button>
+    </dialog>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
